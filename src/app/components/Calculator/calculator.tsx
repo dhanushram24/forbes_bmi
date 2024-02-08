@@ -18,27 +18,27 @@ export default function Calculator() {
   const [healthyweight1, sethealthyweight1]=useState('');
   const [healthyweight2, sethealthyweight2]=useState('');
   const [xAxis, setxAxis] = useState('');
-  const handleAgeChange = (event) => {
+  const handleAgeChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setAge(event.target.value);
   };
-  const handleMonth = (event) => {
+  const handleMonth = (event:React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
   };
 
-  const handleWeightChange = (event) => {
+  const handleWeightChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setWeight(event.target.value);
   };
 
-  const handleFeetChange = (event) => {
+  const handleFeetChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setFeet(event.target.value);
   };
 
-  const handleInchesChange = (event) => {
+  const handleInchesChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setHeightInInches(event.target.value);
   };
   
 
-  const handleHeightChange = (event) => {
+  const handleHeightChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setHeightInCm(event.target.value);
   };
 
@@ -142,7 +142,7 @@ export default function Calculator() {
 
         <div style={{width:'30%'}}>
           <div className={styles.SelectContainer}>
-        <label label className={styles.Label}>Select</label>
+        <label className={styles.Label}>Select</label>
     <select
     value={selectedCategory}
     onChange={(e) => setSelectedCategory(e.target.value)}

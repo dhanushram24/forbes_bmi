@@ -2,17 +2,17 @@ export async function POST(req) {
   const body = await req.json();
   console.log(body);
   const isInches=body.isInches;
-  let m;
-  let kg;
+  let inm;
+  let inkg;
   if(isInches){
-	m=(parseInt(body.feet,10)*12+parseInt(body.heightInInches,10))*0.0254;
-	kg=parseInt(body.weight)*0.45359237;
+	inm=(parseInt(body.feet,10)*12+parseInt(body.heightInInches,10))*0.0254;
+	inkg=parseInt(body.weight)*0.45359237;
   }
   else{
-	m=parseFloat(body.heightInCm)*0.01;
-	kg=parseInt(body.weight);
+	inm=parseFloat(body.heightInCm)*0.01;
+	inkg=parseInt(body.weight);
   }
 
-  const bmi = parseFloat(kg) / (m * m);
+  const bmi = parseFloat(inkg) / (inm * inm);
   return Response.json(bmi);
 }
