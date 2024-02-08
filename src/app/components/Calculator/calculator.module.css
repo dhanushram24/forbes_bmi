@@ -1,0 +1,123 @@
+
+.SelectContainer {
+    margin-bottom: 20px;
+}
+
+.Label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.SelectDropdown {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+.RadioButtonLabel {
+    margin-right: 10px;
+}
+
+.RadioButton {
+    margin-right: 10px;
+}
+.main {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.calculator {
+    width: 48%;
+}
+
+.chartContainer {
+    width: 48%;
+}
+
+.formContainer {
+    width: 50%;
+}
+
+.graphContainer {
+    width: 50%;
+}
+
+.Label {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+    color: #4a5568;
+    font-family: serif, arial;
+}
+
+.Input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #657E79;
+}
+
+.Logo {
+    margin: 1rem;
+}
+
+.HeaderContent {
+    margin: 1rem;
+}
+
+.Title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Subtitle {
+    font-size: 1.25rem;
+    color: white;
+}
+
+.ButtonContainer {
+    margin-top: 25px;
+}
+
+.CalculateButton {
+    background-color: #657E79;
+    color: #ffffff;
+    padding: 14px 24px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.myTwoColumnGrid {
+    display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+}
