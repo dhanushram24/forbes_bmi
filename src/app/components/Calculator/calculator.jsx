@@ -1,9 +1,9 @@
 "use client"
 import React, { useState } from 'react';
-import styles from './calculator.module.css';
+import styles from './Calculator.module.css';
 import Image from 'next/image';
 
-export default function calculator() {
+export default function Calculator() {
   const [selectedGender, setSelectedGender] = useState('male');
   const [feet, setFeet] = useState('');
   const [heightInInches, setHeightInInches] = useState('');

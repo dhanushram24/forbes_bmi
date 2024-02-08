@@ -1,3 +1,19 @@
+.CalculateButton {
+    background-color: #657E79;
+    color: #ffffff;
+    padding: 14px 24px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.stylesGrid {
+    display: block;
+}
+
+.stylesLeftGrid {
+    padding: 35px;
+    background-color: #f6f5f3;
+}
 .main {
     display: flex;
     justify-content: space-evenly;
@@ -78,24 +94,6 @@
     margin-top: 25px;
 
 }
-
-.CalculateButton {
-    background-color: #657E79;
-    color: #ffffff;
-    padding: 14px 24px;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.stylesGrid {
-    display: block;
-}
-
-.stylesLeftGrid {
-    padding: 35px;
-    background-color: #f6f5f3;
-}
-
 @media only screen and (min-width: 1000px) and (max-width:1200px) {
     .stylesGrid {
         display: flex;
