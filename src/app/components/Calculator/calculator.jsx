@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import styles from './Calculator.module.css';
+import styles from './calculator.module.css';
 import Image from 'next/image';
 
 export default function Calculator() {
