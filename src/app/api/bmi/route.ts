@@ -4,11 +4,11 @@ export async function POST(req) {
   let m;
   let kg;
   if(isInches){
-	m=(parseInt(body.feet,10)*12+parseInt(body.heightInInches,10))*0.0254;
+	m=(parseInt(body.ft,10)*12+parseInt(body.htInIn,10))*0.0254;
 	kg=parseInt(body.weight)*0.45359237;
   }
   else{
-	m=parseFloat(body.heightInCm)*0.01;
+	m=parseFloat(body.htInCm)*0.01;
 	kg=parseInt(body.weight);
   }
 
