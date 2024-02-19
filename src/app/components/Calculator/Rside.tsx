@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Calculator.module.css';
+import styles from './calculator.module.css';
 
 export default function Rside({ bmiResult, healthyCategory, xAxis, healthywt1, healthywt2, inc }) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './Calculator.module.css';
+import styles from './calculator.module.css';
 export default function Btn({ bmiResult, handleCalculate }) {
 	return (
 		<div className={styles.Btnn}>

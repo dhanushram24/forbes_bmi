@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import styles from './Calculator.module.css';
+import styles from './calculator.module.css';
 import Top from './Top';
 import Lside from './Lside';
 import Rside from './Rside';

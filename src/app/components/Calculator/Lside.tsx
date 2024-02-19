@@ -1,6 +1,6 @@
 import React from "react";
 import Btn from './Btn';
-import styles from './Calculator.module.css';
+import styles from './calculator.module.css';
 
 export default function Lside({
 	selCat,
