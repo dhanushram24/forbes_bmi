@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Calculator.module.css';
 import Image from 'next/image';
+import styles from './Calculator.module.css';
 
 export default function Top() {
   return (
