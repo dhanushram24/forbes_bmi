@@ -21,28 +21,28 @@ export default function Calculator() {
   const [healthywt2, sethealthywt2]=useState('');
   const [xAxis, setxAxis]=useState('');
 
-  const handleAgeChange = (event) => {
+  const handleAgeChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setAge(event.target.value);
   };
 
-  const handleMonthChange = (event) => {
+  const handleMonthChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
   };
 
-  const handleWtChange = (event) => {
+  const handleWtChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setWt(event.target.value);
   };
 
-  const handleFtChange = (event) => {
+  const handleFtChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setFt(event.target.value);
   };
 
-  const handleIncChange = (event) => {
+  const handleIncChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setHtInInc(event.target.value);
   };
   
 
-  const handleHtChange = (event) => {
+  const handleHtChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     setHtInCm(event.target.value);
   };
 
