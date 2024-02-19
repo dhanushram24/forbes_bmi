@@ -1,11 +1,9 @@
 "use client"
+import React, { useState } from 'react';
 import Calculator from './components/Calculator/Calculator';
-import CopyRight from './components/Copyright/copyright';
+
 export default function Home() {
   return(
-    <>
-    <Calculator/>
-    <CopyRight/>
-    </>
-  )
+    <Calculator />
+  );
 }
