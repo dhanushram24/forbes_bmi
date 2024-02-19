@@ -1,19 +1,3 @@
-.CalculateButton {
-    background-color: #657E79;
-    color: #ffffff;
-    padding: 14px 24px;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.sGd {
-    display: block;
-}
-
-.sLGd {
-    padding: 35px;
-    background-color: #f6f5f3;
-}
 .main {
     display: flex;
     justify-content: space-evenly;
@@ -40,11 +24,13 @@
     margin-right: 10px;
 }
 
-.sf {
+
+.ym {
     color: #afadad;
     position: absolute;
     z-index: 9999;
     right: 20px;
+    ;
     top: 18px;
 }
 
@@ -54,7 +40,7 @@
     margin: 0;
 }
 
-.top {
+.Top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,74 +53,99 @@
     border-radius: 4px;
 }
 
-.Logo {
+.img {
     margin: 1rem;
 }
 
-.topCt {
+.TopContent {
     margin: 1rem;
 }
 
-.Tt {
+.Heading {
     font-size: 1.875rem;
     font-weight: bold;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.Stt {
+.SubHeading {
     font-size: 1.25rem;
     color: white;
 }
 
 
-.ButtonContainer {
+.Btnn {
     margin-top: 25px;
+
 }
+
+.CalBtn {
+    background-color: #657E79;
+    color: #ffffff;
+    padding: 14px 24px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.stylesSide {
+    display: block;
+}
+
+.stylesLside {
+    padding: 35px;
+    background-color: #f6f5f3;
+}
+
 @media only screen and (min-width: 1000px) and (max-width:1200px) {
-    .sGd {
+    .stylesSide {
         display: flex;
         justify-content: space-between;
     }
 
-    .sLGd {
+    .stylesLside {
         width: 35%;
         padding: 35px;
         background-color: #f6f5f3;
     }
 
-    .stylesRightGrid {
+    .stylesRside {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 65%;
     }
 
-    .RightContent {
+    .Rt {
         padding-left: 250px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    .sGd {
+    .stylesSide {
         display: flex;
         justify-content: space-between;
     }
 
-    .sLGd {
+    .stylesLside {
         width: 35%;
         padding: 35px;
         background-color: #f6f5f3;
     }
 
-    .stylesRightGrid {
+    .stylesRside {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 65%;
     }
 
-    .RightContent {
+    .Rt {
         padding-left: 100px;
     }
+}
+
+
+.inInvalid {
+    font-size: 0.875rem;
+    color: red
 }

@@ -1,5 +1,5 @@
 "use client"
-import Calculator from './components/Calculator/calculator';
+import Calculator from './components/Calculator/Calculator';
 import CopyRight from './components/Copyright/copyright';
 export default function Home() {
   return(

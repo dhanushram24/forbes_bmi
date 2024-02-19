@@ -1,17 +1,21 @@
-export async function POST(req) {
-  const body = await req.json();
-  const isInches=body.isInches;
+export async function GET(req) { 
+  const searchParams = req.nextUrl.searchParams
+  const inc = searchParams.get('inc')
+  const queryft = searchParams.get('ft')
+  const queryhtInInc = searchParams.get('htInInc')
+  const querywt = searchParams.get('wt')
+  const queryhtInCm = searchParams.get('htInCm')
   let m;
   let kg;
-  if(isInches){
-	m=(parseInt(body.ft,10)*12+parseInt(body.htInIn,10))*0.0254;
-	kg=parseInt(body.weight)*0.45359237;
+  if (inc=="true") {
+    m = (parseInt(queryft, 10) * 12 + parseInt(queryhtInInc, 10)) * 0.0254;
+    kg = parseInt(querywt) * 0.45359237;
+  } else {
+    m = parseFloat(queryhtInCm) * 0.01;
+    kg = parseInt(querywt);
   }
-  else{
-	m=parseFloat(body.htInCm)*0.01;
-	kg=parseInt(body.weight);
-  }
-
+  
   const bmi = parseFloat(kg) / (m * m);
+
   return Response.json(bmi);
 }

@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/app/components/Calculator/calculator.jsx"  ],
+, "src/app/components/Calculator/Calculator.jsx"  ],
   "exclude": [
     "node_modules"
   ]
