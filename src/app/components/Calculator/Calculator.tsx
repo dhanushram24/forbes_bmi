@@ -158,7 +158,6 @@ export default function Calculator() {
               handleWtChange={handleWtChange}
               inc={inc}
               setInc={setInc}
-              setBmiResult={setBmiResult}
               bmiResult={bmiResult}
             />
             <Rside
