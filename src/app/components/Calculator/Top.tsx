@@ -10,7 +10,7 @@ export default function Top() {
         <h2 className={styles.SubHeading}>Use this calculator to check your body mass index (BMI).</h2>
       </div>
       <div>
-        <Image className={styles.img} src="/bmi2.png" alt="" width={100} height={50} />
+        <Image className={styles.img} src="/bmi2.png" alt="" width={100} height={60} />
       </div>
     </div>
   );

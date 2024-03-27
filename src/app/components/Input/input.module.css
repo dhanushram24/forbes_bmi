@@ -1,0 +1,36 @@
+.Label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: #4a5568;
+    font-family: serif, arial;
+}
+
+.Input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.ym {
+    color: #afadad;
+    position: absolute;
+    z-index: 9999;
+    right: 20px;
+    top: 18px;
+}
+
+.Input::-webkit-outer-spin-button,
+.Input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inInvalid {
+    font-size: 0.875rem;
+    color: red;
+}

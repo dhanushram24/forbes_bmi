@@ -20,23 +20,23 @@ export default function Rside({ bmiResult, healthyCategory, xAxis, healthywt1, h
           </svg>
           <br />
           <div style={{ display: 'flex', position: 'relative', zIndex: '1' }}>
-            <div style={{ backgroundColor: 'green', width: '200px', height: '5px' }}></div>
-            <div style={{ backgroundColor: 'lightgreen', width: '200px', height: '5px' }}></div>
-            <div style={{ backgroundColor: 'orange', width: '200px', height: '5px' }}></div>
-            <div style={{ backgroundColor: 'red', width: '200px', height: '5px' }}></div>
+            <div style={{ backgroundColor: 'green', width: '170px', height: '5px' }}></div>
+            <div style={{ backgroundColor: 'lightgreen', width: '170px', height: '5px' }}></div>
+            <div style={{ backgroundColor: 'orange', width: '170px', height: '5px' }}></div>
+            <div style={{ backgroundColor: 'red', width: '170px', height: '5px' }}></div>
           </div>
           <br />
           <div style={{ display: 'flex', marginBottom: '20px' }}>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Underweight</div>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Healthy</div>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Overweight</div>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Obese</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Underweight</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Healthy</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Overweight</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', fontWeight: 'bold' }}>Obese</div>
           </div>
           <div style={{ display: 'flex' }}>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', color: 'grey' }}>(Below 18.5)</div>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', color: 'grey' }}>(18.5 - 25.0)</div>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', color: 'grey' }}>(25.0 - 30.0)</div>
-            <div style={{ width: '200px', height: '5px', textAlign: 'center', color: 'grey' }}>(30.0 & Above)</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', color: 'grey' }}>(Below 18.5)</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', color: 'grey' }}>(18.5 - 25.0)</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', color: 'grey' }}>(25.0 - 30.0)</div>
+            <div style={{ width: '180px', height: '5px', textAlign: 'center', color: 'grey' }}>(30.0 & Above)</div>
           </div>
           <br /><br /><hr /><br />
           <h1 style={{ fontWeight: 'bold' }}>For your height, a healthy weight would be between <span style={{ fontSize: '40px', color: '#657E79', fontWeight: 'bold', marginLeft: '10px', marginRight: '10px' }}>{healthywt1} & {healthywt2}</span>{inc ? ("pounds") : ("kilograms")}</h1>

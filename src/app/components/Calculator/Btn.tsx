@@ -1,15 +1,18 @@
 import React from "react";
 import styles from './calculator.module.css';
-export default function Btn({ bmiResult, handleCalculate }) {
-	return (
-		<div className={styles.Btnn}>
-				{bmiResult==='NaN'?(
-				<button onClick={handleCalculate} className={styles.CalBtn}>
-					Calculate &gt;
-				</button>
-				):(
-				<button onClick={handleCalculate} className={styles.CalBtn}>
-					Recalculate &#10227;
-				</button>)}
-			</div>
-	)}
+
+export default function Btn({ bmiResult }) {
+  return (
+    <div className={styles.Btnn}>
+      {isNaN(bmiResult) || bmiResult === null ? (
+        <button className={styles.CalBtn}>
+          Calculate &gt;
+        </button>
+      ) : (
+        <button className={styles.CalBtn} >
+          Recalculate &#10227;
+        </button>
+      )}
+    </div>
+  )
+}
