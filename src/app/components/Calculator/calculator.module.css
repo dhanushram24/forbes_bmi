@@ -1,10 +1,20 @@
 .Label {
     display: block;
     margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 20px;
-    color: #4a5568;
-    font-family: serif, arial;
+    margin-bottom: 0.3rem;
+    font-size: 16px;
+    color: #1E293B;
+    font-family: "Euclid Circular B", sans-serif;
+    font-weight: 400;
+}
+
+.Input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    margin-top: 10px;
+    font-weight: 500;
 }
 
 .main {
@@ -13,44 +23,6 @@
     padding: 2rem;
     margin-bottom: 2rem;
 }
-
-.Input::-webkit-outer-spin-button,
-.Input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.Top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1rem;
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-    background-color: #657E79;
-    border-radius: 4px;
-}
-
-.img {
-    margin: 1rem;
-}
-
-.TopContent {
-    margin: 1rem;
-}
-
-.Heading {
-    font-size: 1.875rem;
-    font-weight: bold;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.SubHeading {
-    font-size: 1.25rem;
-    color: white;
-}
-
 
 .Btnn {
     margin-top: 25px;
@@ -66,6 +38,52 @@
     width: 100%;
 }
 
+
+
+.suffix {
+    color: #afadad;
+    position: absolute;
+    z-index: 9999;
+    right: 20px;
+    top: 18px;
+}
+
+.Input::-webkit-outer-spin-button,
+.Input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #657E79;
+    border-radius: 4px;
+}
+
+.img {
+    margin: 1rem;
+}
+
+.Heading {
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+    font-family: "Euclid Circular B", sans-serif;
+}
+
+.SubHeading {
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    font-family: "Euclid Circular B", sans-serif;
+}
+
 .stylesSide {
     display: block;
     width: 100%;
@@ -78,14 +96,26 @@
     background-color: #f6f5f3;
 }
 
+.stylesGrid {
+    display: block;
+}
+
+.stylesLeftGrid {
+    padding: 40px;
+    background-color: #f6f5f3;
+}
+
+.stylesRside {
+    padding: 26px;
+}
 
 @media only screen and (min-width: 1000px) and (max-width:1200px) {
-    .stylesSide {
+    .stylesGrid {
         display: flex;
         justify-content: space-between;
     }
 
-    .stylesLside {
+    .stylesLeftGrid {
         width: 35%;
         padding: 35px;
         background-color: #f6f5f3;
@@ -98,18 +128,18 @@
         width: 65%;
     }
 
-    .Rt {
+    .RightContent {
         padding-left: 250px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    .stylesSide {
+    .stylesGrid {
         display: flex;
         justify-content: space-between;
     }
 
-    .stylesLside {
+    .stylesLeftGrid {
         width: 35%;
         padding: 35px;
         background-color: #f6f5f3;
@@ -122,7 +152,13 @@
         width: 65%;
     }
 
-    .Rt {
+    .RightContent {
         padding-left: 100px;
     }
+}
+
+
+.inputInvalid {
+    font-size: 0.875rem;
+    color: red
 }

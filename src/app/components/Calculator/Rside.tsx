@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './calculator.module.css';
 
-export default function Rside({ bmiResult, healthyCategory, xAxis, healthywt1, healthywt2, inc }) {
+export default function Rside({ bmiResult, healthyCategory, xAxis, healthyweight1, healthyweight2, isInches }) {
   return (
     <div className={styles.stylesRside}>
       {bmiResult === 'NaN' ? (
@@ -39,7 +39,7 @@ export default function Rside({ bmiResult, healthyCategory, xAxis, healthywt1, h
             <div style={{ width: '180px', height: '5px', textAlign: 'center', color: 'grey' }}>(30.0 & Above)</div>
           </div>
           <br /><br /><hr /><br />
-          <h1 style={{ fontWeight: 'bold' }}>For your height, a healthy weight would be between <span style={{ fontSize: '40px', color: '#657E79', fontWeight: 'bold', marginLeft: '10px', marginRight: '10px' }}>{healthywt1} & {healthywt2}</span>{inc ? ("pounds") : ("kilograms")}</h1>
+          <h1 style={{ fontWeight: 'bold' }}>For your height, a healthy weight would be between <span style={{ fontSize: '40px', color: '#657E79', fontWeight: 'bold', marginLeft: '10px', marginRight: '10px' }}>{healthyweight1} & {healthyweight2}</span>{isInches ? ("pounds") : ("kilograms")}</h1>
         </div>)}
     </div>
   );

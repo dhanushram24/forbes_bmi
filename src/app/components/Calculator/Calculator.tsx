@@ -1,177 +1,385 @@
-"use client"
-import React, { useState } from 'react';
-import styles from './calculator.module.css';
-import Top from './Top';
-import Lside from './Lside';
-import Rside from './Rside';
-
+import React, { useState } from "react";
+import styles from "./calculator.module.css";
+import Top from "./Top";
+import Rside from "./Rside";
+import { useForm } from "react-hook-form";
+import Btn from "./Btn";
+import Input from '../Input/Input';
 
 export default function Calculator() {
-  const [selGen, setSelGen] = useState('male');
-  const [ft, setFt] = useState('');
-  const [htInInc, setHtInInc] = useState('');
-  const [htInCm, setHtInCm] = useState('');
-  const [inc, setInc] = useState(true);
-  const [age, setAge] = useState('');
-  const [month, setMonth] = useState('');
-  const [wt, setWt] = useState('');
-  const [bmiResult, setBmiResult] = useState('NaN');
-  const [selCat, setSelCat] = useState('Adult (Age 20+)');
-  const [healthyCategory, setHealthyCategory] = useState('');
-  const [healthywt1, sethealthywt1] = useState('');
-  const [healthywt2, sethealthywt2] = useState('');
-  const [xAxis, setxAxis] = useState('');
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      selectedCategory: "Adult (Age 20+)",
+      isInches: "true",
+      selectedGender: "male",
+      age: "",
+      month: "",
+      feet: "",
+      heightInInches: "",
+      heightInCm: "",
+      weight: "",
+    },
+  });
 
-
-  const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAge(event.target.value);
+  const customStyle = {
+    backgroundColor: "#657E79",
+    color: "white",
+    borderRadius: "4px",
+    width: "100%",
   };
 
-  const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMonth(event.target.value);
-  };
+  const watchCategory = watch("selectedCategory");
+  const watchUnit = watch("isInches");
+  const [bmiResult, setBmiResult] = useState("NaN");
+  const [healthyCategory, setHealthyCategory] = useState("");
+  const [healthyweight1, sethealthyweight1] = useState("");
+  const [healthyweight2, sethealthyweight2] = useState("");
+  const [xAxis, setxAxis] = useState("");
 
-  const handleWtChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWt(event.target.value);
-  };
-
-  const handleFtChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFt(event.target.value);
-  };
-
-  const handleIncChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setHtInInc(event.target.value);
-  };
-
-
-  const handleHtChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setHtInCm(event.target.value);
-  };
-
-  const handleUnitSwitch = () => {
-    setFt('');
-    setHtInInc('');
-    setInc(!inc);
-    setBmiResult('NaN');
-  };
-
-  const handleGenChange = (gender) => {
-    setSelGen(gender);
-  };
-
-
-  function handleCalculate(ev) {
-    let valid = false;
-
-    if (inc) {
-      if ((parseInt(ft) >= 4 && parseInt(ft) <= 8) && (parseInt(htInInc) >= 0 && parseInt(htInInc) <= 11) && (parseInt(wt) >= 40 && parseInt(wt) <= 600)) {
-        valid = true;
-      }
-    }
-    else {
-      if ((parseInt(htInCm) >= 100 && parseInt(htInCm) <= 244) && (parseInt(wt) >= 15 && parseInt(wt) <= 272)) {
-        valid = true;
-      }
-    }
-
-    if (selCat == "Child (Age 5-19)") {
-      if (parseInt(age) < 5 || parseInt(age) > 19 || parseInt(month) > 12) {
-        valid = false;
-      }
-    }
-
-    if (valid) {
-      const queryString = `?ft=${ft}&htInInc=${htInInc}&htInCm=${htInCm}&wt=${wt}&inc=${inc}`;
-
-      return fetch(`/api/bmi${queryString}`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-      }).then(response => {
+  const onSubmit = async (data) => {
+    let feet = data.feet;
+    let heightInInches = data.heightInInches;
+    let heightInCm = data.heightInCm;
+    const queryString = `?feet=${feet}&heightInInches=${heightInInches}&heightInCm=${heightInCm}&weight=${data.weight}&isInches=${data.isInches} `
+    return fetch(`/api/bmi${queryString}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
         if (response.ok) {
-          return response.json().then(data => {
-            console.log("Data from API:", data);
-            setBmiResult(parseFloat(data).toFixed(2));
-            console.log("BMI Result:", parseFloat(data).toFixed(2));
-            if (inc) {
-              let h1 = (18.5 / 703) * (parseInt(ft) * 12 + parseInt(htInInc)) * (parseInt(ft) * 12 + parseInt(htInInc));
-              sethealthywt1(h1.toFixed(0));
-              let h2 = (25.0 / 703) * (parseInt(ft) * 12 + parseInt(htInInc)) * (parseInt(ft) * 12 + parseInt(htInInc));
-              sethealthywt2(h2.toFixed(0));
+          return response.json().then((bmi) => {
+            console.log("Data from API:", bmi);
+            setBmiResult(parseFloat(bmi).toFixed(2));
+            console.log("BMI Result:", parseFloat(bmi).toFixed(2));
+            console.log(parseInt(data.feet));
+            if (watchUnit === "true") {
+              let h1 =
+                (18.5 / 703) *
+                (parseInt(feet) * 12 + parseInt(heightInInches)) *
+                (parseInt(feet) * 12 + parseInt(heightInInches));
+              sethealthyweight1(h1.toFixed(0));
+              let h2 =
+                (25.0 / 703) *
+                (parseInt(feet) * 12 + parseInt(heightInInches)) *
+                (parseInt(feet) * 12 + parseInt(heightInInches));
+              sethealthyweight2(h2.toFixed(0));
+            } else {
+              let h1 =
+                18.5 * parseInt(heightInCm) * parseInt(heightInCm) * 0.0001;
+              sethealthyweight1(h1.toFixed(0));
+              let h2 =
+                25.0 * parseInt(heightInCm) * parseInt(heightInCm) * 0.0001;
+              sethealthyweight2(h2.toFixed(0));
             }
-            if (!inc) {
-              let h1 = 18.5 * parseInt(htInCm) * parseInt(htInCm) * 0.0001;
-              sethealthywt1(h1.toFixed(0));
-              let h2 = 25.0 * parseInt(htInCm) * parseInt(htInCm) * 0.0001;
-              sethealthywt2(h2.toFixed(0));
-            }
-            if (data < 18.5) {
-              setHealthyCategory('Underweight')
+            if (bmi < 18.5) {
+              setHealthyCategory("Underweight");
               setxAxis("100");
-            }
-            else if (data >= 18.5 && data < 25.0) {
-              setHealthyCategory('Healthy')
+            } else if (bmi >= 18.5 && bmi < 25.0) {
+              setHealthyCategory("Healthy");
               setxAxis("300");
-            }
-            else if (data >= 25.0 && data < 30.0) {
-              setHealthyCategory('Overweight')
+            } else if (bmi >= 25.0 && bmi < 30.0) {
+              setHealthyCategory("Overweight");
               setxAxis("500");
-            }
-            else if (data > 30.0) {
-              setHealthyCategory('Obese')
+            } else if (bmi > 30.0) {
+              setHealthyCategory("Obese");
               setxAxis("700");
             }
           });
-        }
-        else {
+        } else {
           alert("Error");
         }
-      }).catch(error => {
-        console.log('error: ', error);
+      })
+      .catch((error) => {
+        console.log("error: ", error);
       });
-    }
-  }
-
-
+  };
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-evenly', height: '100vh', width: '100vw', padding: 0 }}>
-        <div style={{ width: '100%', paddingTop: 0, height: '100%' }}>
-          <Top />
-          <div className={styles.stylesSide}>
-            <Lside
-              selCat={selCat}
-              setSelCat={setSelCat}
-              selGen={selGen}
-              handleGenChange={handleGenChange}
-              age={age}
-              month={month}
-              handleAgeChange={handleAgeChange}
-              handleMonthChange={handleMonthChange}
-              ft={ft}
-              htInInc={htInInc}
-              handleFtChange={handleFtChange}
-              handleIncChange={handleIncChange}
-              htInCm={htInCm}
-              handleHtChange={handleHtChange}
-              wt={wt}
-              handleWtChange={handleWtChange}
-              inc={inc}
-              setInc={setInc}
-              setBmiResult={setBmiResult}
-              bmiResult={bmiResult}
-            />
-            <Rside
-              bmiResult={bmiResult}
-              healthyCategory={healthyCategory}
-              xAxis={xAxis}
-              healthywt1={healthywt1}
-              healthywt2={healthywt2}
-              inc={inc}
-            />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <div style={{ width: "100%" }}>
+            <Top />
+            <div className={styles.stylesGrid}>
+              <div className={styles.stylesLeftGrid}>
+                <div>
+                  <label className={styles.Label}>Select</label>
+                  <select
+                    {...register("selectedCategory")}
+                    style={{
+                      padding: "15px",
+                      width: "100%",
+                      border: "1px solid #ccc",
+                      borderRadius: "0.25rem",
+                      fontWeight: "500",
+                    }}
+                  >
+                    <option value="Adult (Age 20+)">Adult (Age 20+)</option>
+                    <option value="Child (Age 5-19)">Child (Age 5-19)</option>
+                  </select>
+                </div>
+                {watchCategory === "Child (Age 5-19)" ? (
+                  <div>
+                    <label className={styles.Label}>Age</label>
+                    <div style={{ display: "flex" }}>
+                      <div
+                        style={{
+                          width: "45%",
+                          marginRight: "20px",
+                          display: "flex",
+                          position: "relative",
+                        }}
+                      >
+                        <Input
+                          value={watch("age")}
+                          min={5}
+                          max={19}
+                          invalidMessage="Please enter an age between 5 and 19 years."
+                          onChange={(value) => setValue("age", value)}
+                        />
+
+                        <span className={styles.suffix}>years</span>
+
+                      </div>
+                      <div
+                        style={{
+                          width: "50%",
+                          display: "flex",
+                          position: "relative",
+                        }}
+                      >
+                        <Input
+                          value={watch("month")}
+                          min={0}
+                          max={11}
+                          invalidMessage="Please enter an age between 0 and 11 months."
+                          onChange={(value) => setValue("month", value)}
+                        />
+                        <span className={styles.suffix}>months</span>
+
+                      </div>
+                    </div>
+                    {errors.age && (
+                      <span className={styles.inputInvalid}>
+                        {errors.age.message}
+                      </span>
+                    )}
+                    {errors.month && (
+                      <span className={styles.inputInvalid}>
+                        {errors.month.message}
+                      </span>
+                    )}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+
+                <div>
+                  <label className={styles.Label}>Height</label>
+                  <div>
+                    <label style={{ marginRight: "30px" }}>
+                      <input
+                        type="radio"
+                        {...register("isInches")}
+                        value="false"
+                        checked={watchUnit === "false"}
+                        onChange={() => setValue("isInches", "false")}
+                        style={{ marginRight: "5px", accentColor: "#657E79" }}
+                      />
+                      Centimetres
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        {...register("isInches")}
+                        value="true"
+                        checked={watchUnit === "true"}
+                        onChange={() => setValue("isInches", "true")}
+                        style={{ marginRight: "5px", accentColor: "#657E79" }}
+                      />
+                      Feet and inches
+                    </label>
+                  </div>
+                  {watchUnit === "true" ? (
+                    <div>
+                      <div style={{ display: "flex" }}>
+                        <div
+                          style={{
+                            width: "45%",
+                            marginRight: "20px",
+                            display: "flex",
+                            position: "relative",
+                          }}
+                        >
+                          <Input
+                            value={watch("feet")}
+                            min={4}
+                            max={8}
+                            invalidMessage="Height value must be between 4 and 8 feet."
+                            onChange={(value) => setValue("feet", value)}
+                          />
+                          <span className={styles.suffix}>ft</span>
+
+                        </div>
+                        <div
+                          style={{
+                            width: "50%",
+                            display: "flex",
+                            position: "relative",
+                          }}
+                        >
+                          <Input
+                            value={watch("heightInInches")}
+                            min={0}
+                            max={11}
+                            invalidMessage="Please enter a value between 0 and 11 inches."
+                            onChange={(value) => setValue("heightInInches", value)}
+                          />
+                          <span className={styles.suffix}>in</span>
+                        </div>
+                      </div>
+
+                      {errors.feet && (
+                        <span className={styles.inputInvalid}>
+                          {errors.feet.message}
+                        </span>
+                      )}
+                      {errors.heightInInches && (
+                        <span className={styles.inputInvalid}>
+                          {errors.heightInInches.message}
+                        </span>
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      <div style={{ display: "flex", position: "relative" }}>
+                        <Input
+                          value={watch("heightInCm")}
+                          min={100}
+                          max={244}
+                          invalidMessage="Please enter a value between 100 and 244 cm"
+                          onChange={(value) => setValue("heightInCm", value)}
+                        />
+                        <span className={styles.suffix}>cms</span>
+
+                      </div>
+                      {errors.heightInCm && (
+                        <span className={styles.inputInvalid}>
+                          {errors.heightInCm.message}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <label className={styles.Label}>Weight</label>
+                  <div>
+                    <label style={{ marginRight: "30px" }}>
+                      <input
+                        type="radio"
+                        {...register("weight")}
+                        value="kg"
+                        checked={watchUnit === "false"}
+                        onChange={() => setValue("isInches", "false")}
+                        style={{ marginRight: "5px", accentColor: "#657E79" }}
+                      />
+                      Kilograms
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        {...register("weight")}
+                        value="pounds"
+                        checked={watchUnit === "true"}
+                        onChange={() => setValue("isInches", "true")}
+                        style={{ marginRight: "5px", accentColor: "#657E79" }}
+                      />
+                      Pounds
+                    </label>
+                  </div>
+                  <div style={{ width: "100%", display: "flex", position: "relative" }}>
+                    <input
+                      type="number"
+                      {...register("weight", {
+                        validate: (value) =>
+                          (watchUnit === "true" &&
+                            parseInt(value) >= 40 &&
+                            parseInt(value) <= 600) ||
+                          (watchUnit === "false" &&
+                            parseInt(value) >= 15 &&
+                            parseInt(value) <= 272) ||
+                          "Please enter a weight within the valid range",
+                      })}
+                      className={styles.Input}
+                    />
+                    <span className={styles.suffix}>
+                      {watchUnit === "true" ? "lbs" : "Kg"}
+                    </span>
+                  </div>
+                  {errors.weight && (
+                    <span className={styles.inputInvalid}>
+                      {errors.weight.message}
+                    </span>
+                  )}
+                </div>
+
+                {watchCategory === "Child (Age 5-19)" && (
+                  <div>
+                    <label className={styles.Label}>Gender</label>
+                    <div>
+                      <label style={{ marginRight: "30px" }}>
+                        <input
+                          type="radio"
+                          {...register("selectedGender")}
+                          value="male"
+                          onChange={({ target }) =>
+                            setValue("selectedGender", target.value)
+                          }
+                          style={{ marginRight: "5px", accentColor: "#657E79" }}
+                        />
+                        Male
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          {...register("selectedGender")}
+                          value="female"
+                          onChange={({ target }) =>
+                            setValue("selectedGender", target.value)
+                          }
+                          style={{ marginRight: "5px", accentColor: "#657E79" }}
+                        />
+                        Female
+                      </label>
+                    </div>
+                  </div>
+                )}
+
+                <Btn
+                  bmiResult={bmiResult}
+                  handleSubmit={handleSubmit(onSubmit)}
+                  customStyle={customStyle}
+                />
+              </div>
+              <Rside
+                bmiResult={bmiResult}
+                healthyCategory={healthyCategory}
+                xAxis={xAxis}
+                healthyweight1={healthyweight1}
+                healthyweight2={healthyweight2}
+                isInches={watchUnit}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 }
